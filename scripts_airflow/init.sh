@@ -13,7 +13,10 @@ cd /dbt && dbt compile
 rm -f /airflow/airflow-webserver.pid
 
 sleep 10
-airflow upgradedb
+airflow db upgrade
 sleep 10
-airflow connections --add --conn_id 'dbt_postgres_instance_raw_data' --conn_uri $DBT_POSTGRESQL_CONN
+airflow users create --role Admin --username admin --email admin --firstname admin --lastname admin --password admin
+sleep 10
+airflow connections add 'dbt_postgres_instance_raw_data'  --conn-uri $DBT_POSTGRESQL_CONN
+
 airflow scheduler & airflow webserver

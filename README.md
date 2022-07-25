@@ -1,8 +1,14 @@
-# Apache Airflow and DBT using Docker Compose
+# Apache Airflow 2 and DBT 1.0.0 using Docker Compose
+
 Stand-alone project that utilises public eCommerce data from Instacart to demonstrate how to schedule dbt models through Airflow.
 
 For more Data & Analytics related reading, check https://analyticsmayhem.com
 
+## Changes
+ - Bumped to Airflow 2.2.4
+ - Bumped to dbt 1.0.0
+ - Reuse db instance for Postgres and dbt
+ - Create Airflow 2 RBAC Admin user - admin:admin
 ## Requirements 
 * Install [Docker](https://www.docker.com/products/docker-desktop)
 * Install [Docker Compose](https://docs.docker.com/compose/install/)
@@ -22,6 +28,7 @@ Change directory within the repository and run `docker-compose up`. This will pe
 ## Connections
 * Adminer UI: [http://localhost:8080](http://localhost:8080/?pgsql=postgres-dbt&username=dbtuser&db=dbtdb&ns=dbt) Credentials as defined at [`docker-compose.yml`](https://github.com/konosp/dbt-airflow-docker-compose/blob/master/docker-compose.yml)
 * Airflow UI: http://localhost:8000
+   - Log in with `admin:admin`
 
 ## How to ran the DAGs
 Once everything is up and running, navigate to the Airflow UI (see connections above). You will be presented with the list of DAGs, all Off by default.
