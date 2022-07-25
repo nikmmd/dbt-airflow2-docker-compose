@@ -3,8 +3,8 @@ default:
   outputs:
     dev:
       type: postgres
-      host: postgres-dbt
-      user: dbtuser
+      host: postgres-airflow
+      user: airflowuser
       pass: pssd
       port: 5432
       dbname: dbtdb

@@ -5,3 +5,8 @@ dbt/data/order_products__prior.csv.zip
 *.pyc
 sample_data/order_products__prior.csv.zip
 .gitkeep
+logs
+webserver_config.py
+airflow.cfg
+# ignore CSV if exreacted
+sample_data
