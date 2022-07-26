@@ -103,7 +103,15 @@ for node in nodes:
             bash_command=bsh_cmd,
             dag=init_once_dag,
         )
-        all_operators[node] = tmp_operator
+        test_cmd = 'cd /dbt && dbt test --models {nodeName} '.format(nodeName = node)
+        test_operator = BashOperator(
+            task_id= node+"_test",
+            bash_command=test_cmd,
+            dag=init_once_dag,
+            retries=0
+        )
+
+        all_operators[node] = tmp_operator >> test_operator
 
 # Parse nodes and assign operator dependencies
 for node in nodes:

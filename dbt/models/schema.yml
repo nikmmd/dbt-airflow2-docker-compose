@@ -11,3 +11,18 @@ sources:
       - name: products
       - name: order_products__train
       - name: order_products__prior
+
+models:
+  - name: clean_orders
+    description: One record per customer
+    columns:
+    - name: "(order_id || '-' || user_id)"
+      description: Primary key
+      tests:
+        - unique
+        - not_null
+    # Uncomment me to fail
+    # - name: "days_since_prior_order"
+    #   description: Must have days since prior order
+    #   tests:
+    #     - not_null

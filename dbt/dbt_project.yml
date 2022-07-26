@@ -43,6 +43,6 @@ models:
             materialized: incremental
             tags: daily
         initialisation:
-            tags: init-once
+            tags: init-once            
         core:
             tags: snapshot
